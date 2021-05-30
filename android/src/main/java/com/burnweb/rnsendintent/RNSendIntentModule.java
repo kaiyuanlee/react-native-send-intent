@@ -411,6 +411,24 @@ public class RNSendIntentModule extends ReactContextBaseJavaModule {
 
         promise.resolve(true);
     }
+    
+    @ReactMethod
+    public void openApk(String fileUrl, final Promise promise) {
+        File file = new File(fileUrl);
+
+        Uri uri = Uri.fromFile(file);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+            uri = FileProvider.getUriForFile(this.reactContext, this.reactContext.getPackageName() + ".fileprovider", file);
+        }
+
+        final Intent intent = new Intent(Intent.ACTION_VIEW)
+        .setDataAndType(uri, "application/vnd.android.package-archive");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        this.reactContext.startActivity(intent);
+
+        promise.resolve(true);
+    }
 
     @ReactMethod
     public void installRemoteApp(final String uri, final String saveAs, final Promise promise) {
