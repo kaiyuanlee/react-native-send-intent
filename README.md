@@ -1,3 +1,9 @@
+## install local APK file
+
+```javascript
+SendIntentAndroid.openApk("/storage/emulated/0/Download/android_1.5.28.apk");
+```
+
 # react-native-send-intent
 
 React Native Android module to use Android's Intent actions for send text to shareable apps or make phone calls or opening third party apps.
