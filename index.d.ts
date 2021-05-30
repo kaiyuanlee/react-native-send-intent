@@ -50,6 +50,7 @@ declare namespace SendIntentAndroid {
   const addCalendarEvent: (config: CalendarEventConfig) => void
   const isAppInstalled: (packageName: string) => Promise<boolean>
   const installRemoteApp: (uri: string, saveAs: string) => Promise<boolean>
+  const openApk: (fileUrl: string) => Promise<boolean>
   const openCalendar: () => void
   const sendMail: (recepientMail: string, subject?: string, body?: string) => void
   const openChooserWithOptions: (options: ChooserOptions, title: string) => void
